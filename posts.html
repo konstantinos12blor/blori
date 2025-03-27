@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posts</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>📢 Νέες Αναρτήσεις</h1>
+
+        <div id="postsContainer">
+            <!-- Εδώ θα προστίθενται τα posts δυναμικά -->
+        </div>
+    </div>
+
+    <div class="bottom-menu">
+        <button onclick="goTo('posts.html')">Posts</button>
+        <button onclick="goTo('messages.html')">Μηνύματα</button>
+        <button onclick="goTo('profile.html')">Λογαριασμός</button>
+    </div>
+
+    <script>
+        // Mock δεδομένα για posts
+        let posts = [
+            {
+                username: "Nikos",
+                pfp: "https://randomuser.me/api/portraits/men/1.jpg",
+                text: "Καλημέρα σε όλους! ☀️",
+                image: "https://source.unsplash.com/random/400x300",
+                likes: 12
+            },
+            {
+                username: "Maria",
+                pfp: "https://randomuser.me/api/portraits/women/2.jpg",
+                text: "Νέο ταξίδι ✈️",
+                image: "https://source.unsplash.com/random/400x300?travel",
+                likes: 45
+            }
+        ];
+
+        function loadPosts() {
+            let container = document.getElementById("postsContainer");
+            container.innerHTML = ""; // Καθαρίζει τα posts πριν τα ξαναφορτώσει
+
+            posts.forEach((post, index) => {
+                let postDiv = document.createElement("div");
+                postDiv.classList.add("post");
+
+                postDiv.innerHTML = `
+                    <div class="post-header">
+                        <img src="${post.pfp}" class="pfp">
+                        <span class="username">${post.username}</span>
+                    </div>
+                    <p class="post-text">${post.text}</p>
+                    ${post.image ? `<img src="${post.image}" class="post-image">` : ""}
+                    <div class="post-actions">
+                        <button onclick="likePost(${index})">❤️ <span id="likes-${index}">${post.likes}</span></button>
+                        <button>💬 Σχόλια</button>
+                    </div>
+                `;
+
+                container.appendChild(postDiv);
+            });
+        }
+
+        function likePost(index) {
+            posts[index].likes++;
+            document.getElementById(`likes-${index}`).innerText = posts[index].likes;
+        }
+
+        function goTo(page) {
+            window.location.href = page;
+        }
+
+        window.onload = loadPosts;
+    </script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f0f2f5;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .post {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .post-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .pfp {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .username {
+            font-weight: bold;
+        }
+
+        .post-text {
+            margin-bottom: 10px;
+        }
+
+        .post-image {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .post-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .post-actions button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 5px;
+        }
+
+        .post-actions button:hover {
+            color: red;
+        }
+
+        .bottom-menu {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            background: #ddd;
+            padding: 10px;
+        }
+
+        .bottom-menu button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+
+</body>
+</html>

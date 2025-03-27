@@ -3,27 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login & Register</title>
+    <title>Σύνδεση</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <div class="container">
-        <h2>Σύνδεση</h2>
-        <form id="login-form">
-            <input type="email" id="login-email" placeholder="Email" required>
-            <input type="password" id="login-password" placeholder="Κωδικός" required>
-            <button type="submit">Σύνδεση</button>
-        </form>
+        <h2>Καλώς ήρθατε</h2>
+        <input type="email" id="email" placeholder="Email">
+        <input type="password" id="password" placeholder="Κωδικός">
         
-        <h2>Εγγραφή</h2>
-        <form id="register-form">
-            <input type="email" id="register-email" placeholder="Email" required>
-            <input type="password" id="register-password" placeholder="Κωδικός" required>
-            <button type="submit">Εγγραφή</button>
-        </form>
-        
+        <button id="loginButton">Σύνδεση</button>
+        <button id="registerButton">Εγγραφή</button>
+
         <p id="message"></p>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>

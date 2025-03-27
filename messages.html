@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Μηνύματα</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>Σελίδα Μηνυμάτων</h2>
+    <p>Εδώ θα εμφανίζονται τα μηνύματα.</p>
+
+    <div class="bottom-menu">
+        <button onclick="goTo('posts.html')">Posts</button>
+        <button onclick="goTo('messages.html')">Μηνύματα</button>
+        <button onclick="goTo('profile.html')">Λογαριασμός</button>
+    </div>
+
+    <script>
+        function goTo(page) {
+            window.location.href = page;
+        }
+    </script>
+</body>
+</html>

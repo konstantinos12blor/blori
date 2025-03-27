@@ -1,35 +1,30 @@
-document.getElementById("register-form").addEventListener("submit", async function(event) {
-    event.preventDefault();
+document.getElementById("loginButton").addEventListener("click", function() {
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+
+    if (email === "" || password === "") {
+        document.getElementById("message").innerText = "Συμπληρώστε όλα τα πεδία!";
+        return;
+    }
+
+    // Προσωρινό μήνυμα επιτυχίας
+    document.getElementById("message").innerText = "Συνδεθήκατε με επιτυχία!";
     
-    const email = document.getElementById("register-email").value;
-    const password = document.getElementById("register-password").value;
-
-    const response = await fetch("/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password })
-    });
-
-    const data = await response.json();
-    document.getElementById("message").innerText = data.message;
+    // Μεταφορά στη σελίδα των posts μετά από 1,5 δευτερόλεπτο
+    setTimeout(function() {
+        window.location.href = "posts.html";
+    }, 1500);
 });
 
-document.getElementById("login-form").addEventListener("submit", async function(event) {
-    event.preventDefault();
-    
-    const email = document.getElementById("login-email").value;
-    const password = document.getElementById("login-password").value;
+document.getElementById("registerButton").addEventListener("click", function() {
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
 
-    const response = await fetch("/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password })
-    });
-
-    const data = await response.json();
-    document.getElementById("message").innerText = data.message;
-
-    if (data.success) {
-        window.location.href = "home.html"; // Μεταφορά στη σελίδα των posts
+    if (email === "" || password === "") {
+        document.getElementById("message").innerText = "Συμπληρώστε όλα τα πεδία!";
+        return;
     }
+
+    // Προσωρινό μήνυμα εγγραφής
+    document.getElementById("message").innerText = "Η εγγραφή ολοκληρώθηκε!";
 });
